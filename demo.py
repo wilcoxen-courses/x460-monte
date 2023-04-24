@@ -484,6 +484,7 @@ case2 = predict_q_gas(ind_vars_2, draws)
 pct = 100*(case2/case1 - 1)
 
 pct_stats = pct.describe(percentiles=[0.05,0.95])
+print( '\nPercent changes in Qg:\n')
 print( pct_stats )
 
 #
@@ -493,6 +494,7 @@ print( pct_stats )
 rev = tax*case2/1e9
 
 rev_stats = rev.describe(percentiles=[0.05,0.95])
+print( '\nRevenue in billions:\n')
 print( rev_stats )
 
 #
@@ -513,3 +515,29 @@ ax.axvline(rev_stats['95%'],c='r')
 
 fig.tight_layout()
 fig.savefig('dist_rev.png')
+
+#%%
+#
+#  Finally, compare impacts from changes in gas and coal prices on
+#  gas consumption. Case 3 captures only gas price effects and
+#  Case 4 captures only coal price effects.
+#
+
+def get_stats(setvar):
+
+    ind_vars = ind_vars_1.copy()
+    ind_vars[setvar] = ind_vars_2[setvar]
+
+    res   = predict_q_gas(ind_vars, draws)
+    pct   = 100*(res/case1 - 1)
+    stats = pct.describe(percentiles=[0.05,0.95])
+
+    return stats
+
+summary = pd.DataFrame()
+summary['policy'] = pct_stats
+summary['gas only'] = get_stats('ln_p_gas' )
+summary['coal only'] = get_stats('ln_p_coal')
+
+print( '\nPercentage changes in Qg:\n')
+print(summary)
