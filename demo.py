@@ -491,7 +491,7 @@ print( pct_stats )
 #  Revenue raised via the tax on gas in billions
 #
 
-rev = tax*case2/1e9
+rev = tax_gas*case2/1e9
 
 rev_stats = rev.describe(percentiles=[0.05,0.95])
 print( '\nRevenue in billions:\n')
