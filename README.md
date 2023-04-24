@@ -18,7 +18,7 @@ The analysis here determines the CI for revenue accounting for uncertainty in th
 
 ## Input Data
 
-All data came from the US Energy Information Administration (EIA). The input files are included in the repository in the `eia` subdirectory.
+All data came from the US Energy Information Administration (EIA)'s [Monthly Energy Review](https://www.eia.gov/totalenergy/data/monthly/index.php). The input files are included in the repository in the `eia` subdirectory.
 
 ## Deliverables
 
