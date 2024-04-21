@@ -2,7 +2,7 @@
 
 ## Summary
 
-The **demo.py** file in this repository shows how to run a regression using the `statsmodels` module and then how to carry out Monte Carlo analysis to generate the confidence interval for a key variable in a policy experiment.
+The **demo.py** file in this repository shows how to run a regression using the `statsmodels` module and then how to carry out Monte Carlo analysis to generate the confidence interval for a key variable in a policy experiment. It also shows a number of useful features of pandas, matplotlib, and seaborn.
 
 The example regression is a very simple model of the demand for natural gas by electric utilities. It gives the log of the natural gas (`Qg`) consumed by power producers as a function of the log of the real price of natural gas (`Pg`), the log of the real price of coal (`Pc`), and the log of real GDP (`GDP`):
 
