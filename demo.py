@@ -46,9 +46,9 @@ eia_miss = ['Not Available',
             'Withheld',
             'Not Applicable']
 
-#%% set up read_mer_file
+#%% define read_mer_file
 #
-#  Function for reading an MER file, which are in long format
+#  Function for reading a MER file in long format
 #
 
 def read_mer_file(fname,missing):
@@ -78,7 +78,7 @@ def read_mer_file(fname,missing):
 
     return (info,data)
 
-#%% read MER files
+#%% read files
 #
 #  Go through the MER list and stack all the data into dataframes
 #  of information and actual data
@@ -228,7 +228,6 @@ g_raw = pd.read_excel(
 #  2012 dollars.
 #
 
-pop  = g_raw['Total Resident Population, United States']
 gdp  = g_raw['U.S. Gross Domestic Product, Real']
 defl = g_raw['U.S. Gross Domestic Product Implicit Price Deflator']
 
@@ -257,7 +256,6 @@ res['co2_gas' ] = uns['gas_mt_mmbtu' ]
 
 #  Keep macro variables
 
-res['pop'] = pop
 res['gdp'] = gdp
 
 #  Write it all out for reference, or for using with Stata
@@ -539,7 +537,7 @@ fig.supxlabel('Note: cyan=median, orange=mean',fontsize='medium')
 
 fig.savefig('dist_rev.png')
 
-#%% compare impacts
+#%% compare price effects
 #
 #  Finally, compare impacts from changes in gas and coal prices on
 #  gas consumption. Case 3 captures only gas price effects and
@@ -581,7 +579,7 @@ print(stats)
 
 #%%
 #
-#  Plot the distributions
+#  Plot the distributions of Qg changes
 #
 
 stack = allcases.stack().reset_index(1)
@@ -591,7 +589,7 @@ stack = stack.rename(columns={'level_1':'Case',0:'pct'})
 
 g = sns.displot(data=stack,x='pct',hue='Case',kind='hist')
 g.set_axis_labels('Percent Change in Q of gas','Count')
-g.fig.suptitle('Decomposing the Effects of Gas and Coal Prices')
-g.fig.supxlabel(f'Medians: 2={m2}%, 3={m3}%, 4={m4}%',fontsize='medium')
-g.fig.tight_layout()
-g.fig.savefig('decomp.png')
+g.figure.suptitle('Decomposing the Effects of Gas and Coal Prices')
+g.figure.supxlabel(f'Medians: 2={m2}%, 3={m3}%, 4={m4}%',fontsize='medium')
+g.figure.tight_layout()
+g.figure.savefig('decomp.png')
