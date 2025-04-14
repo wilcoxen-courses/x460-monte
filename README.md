@@ -4,9 +4,11 @@
 
 The **demo.py** file in this repository shows how to run a regression using the `statsmodels` module and then how to carry out Monte Carlo analysis to generate the confidence interval for a key variable in a policy experiment. It also shows a number of useful features of pandas, matplotlib, and seaborn.
 
-The example regression is a very simple model of the demand for natural gas by electric utilities. It gives the log of the natural gas (`Qg`) consumed by power producers as a function of the log of the real price of natural gas (`Pg`), the log of the real price of coal (`Pc`), and the log of real GDP (`GDP`):
+The example regression is a very simple model of the demand for natural gas by electric utilities. It gives the log of the natural gas consumed by power producers (`Qg`) as a function of the log of the real price of natural gas (`Pg`), the log of the real price of coal (`Pc`), and the log of real GDP (`GDP`):
 
         ln(Qg) = b0 + b1*ln(Pg) + b2*ln(Pc) + b3*ln(GDP) + e
+
+To be clear, this is an example only, not a serious model of natural gas demand. To keep things simple, it leaves out many features of real natural gas demand, such as the weather, the prices of non-fossil sources of electricity such as nuclear power and renewable energy, congestion on the electric grid, and emissions control regulations, to name a few. It also assumes that prices of gas and coal are perfectly elastic and do not respond to changes in gas demand.
 
 The Monte Carlo analysis focuses on calculating the **90% confidence interval** (CI) for the mean **revenue** that would be generated on natural gas by a $50 per ton tax on carbon dioxide applied to both gas and coal. Revenue on gas is given by:
 
