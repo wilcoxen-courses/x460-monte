@@ -64,7 +64,7 @@ def read_mer_file(fname,missing):
     #  Collect information about each series
 
     info = raw[['MSN','Description','Unit']].drop_duplicates()
-    info.set_index('MSN',inplace=True)
+    info = info.set_index('MSN')
 
     #  Find annual data, which has 13 for the month
 
@@ -166,7 +166,7 @@ uns = select.pivot( index='Year', columns='MSN', values='Value' )
 #  Rename the columns
 #
 
-uns.rename(columns=map_names, inplace=True)
+uns = uns.rename(columns=map_names)
 
 #
 #  Drop years with missing data: before 1972 and after latest year
